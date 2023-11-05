@@ -49,9 +49,13 @@ export const App = () => {
   // }
 
   const handleFilterChange = e => {
-    setFilter({ filter: e.target.value });
+    const newFilter = e.target.value;
+    setFilter(newFilter);
   };
 
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
   // handleFilterChange = e => {
   //   this.setState({ filter: e.target.value });
   // };
@@ -120,8 +124,8 @@ export const App = () => {
       <h2>Contacts</h2>
       <Filter filter={filter} onFilterChange={handleFilterChange} />
       <ContactList
-        contacts={contacts}
-        filter={filter}
+        contacts={filteredContacts}
+        // filter={filter}
         onDeleteContact={handleDeleteContact}
       />
     </div>

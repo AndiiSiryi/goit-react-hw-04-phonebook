@@ -1,16 +1,11 @@
-
 import { ContactItem } from './ContactItem';
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
-export const ContactList = ({ contacts, filter, onDeleteContact }) => {
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
+export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul className={css.list}>
-      {filteredContacts.map((contact) => (
+      {contacts.map(contact => (
         <ContactItem
           key={contact.id}
           name={contact.name}
